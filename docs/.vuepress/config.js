@@ -11,7 +11,7 @@ export default defineUserConfig({
   description: 'AutoX 文档',
 
   theme: defaultTheme({
-    logo: './logo.png',
+    logo: './images/logo.png',
     repo: "https://github.com/kkevsekk1/AutoX",
     navbar: [
       {
