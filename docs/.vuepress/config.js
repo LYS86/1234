@@ -131,7 +131,7 @@ export default defineUserConfig({
             "link": "storages.md"
           },
           {
-            "text": "Tessract/>",
+            "text": "Tessract",
             "link": "Tessract.md"
           },
           {
@@ -141,10 +141,6 @@ export default defineUserConfig({
           {
             "text": "Timer - 定时器",
             "link": "timers.md"
-          },
-          {
-            "text": "用户界面: UI ",
-            "link": "ui.md"
           },
           {
             "text": "Util",
