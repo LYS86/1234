@@ -2,7 +2,7 @@
 
 <Badge type="tip" text="稳定" vertical="middle" />
 
-::: note 
+::: note app
 该模块允许你与其他应用程序进行交互。你可以启动其他应用程序，发送 Intent 意图，打开文件，发送电子邮件等。
 :::
 
