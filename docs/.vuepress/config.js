@@ -12,6 +12,7 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     logo: './images/logo.png',
+    base: "/doc/",
     repo: "https://github.com/kkevsekk1/AutoX",
     navbar: [
       {
