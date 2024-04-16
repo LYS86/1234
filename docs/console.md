@@ -1,21 +1,14 @@
 # 控制台-console
 
 <Badge type="tip" text="稳定" vertical="middle" />
-
-控制台模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。
-console 模块中的一些函数也可以直接作为全局函数使用，例如 log, print 等。
+::: note
+该模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。
+:::
 
 ## console.show(autoHide)
+- `autoHide` {boolean} 当程序结束的时候是否自动隐藏
 
-- `autoHide` {boolean}
-
-当程序结束的时候是否自动隐藏控制
-显示控制台。这会显示一个控制台的悬浮窗(需要悬浮窗权限)。
-
-```js
-console.show(true); //程序结束自动 隐藏控制台
-console.show(); //结束不会自动隐藏控制台
-```
+显示控制台。**需要悬浮窗权限**。
 
 ## console.hide()
 
@@ -25,57 +18,54 @@ console.show(); //结束不会自动隐藏控制台
 
 清空控制台。
 
-## console.log(data,[...args])
+## console.log(...args)
+<Badge type="tip" text="global" vertical="middle" />
 
-- `data` {any}
-- `...args` {any}
+- `args` {any}
 
 打印到控制台，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)][printf(3)] 中的代替值（参数都会传给 util.format()）。
 
 ```js
-const count = 5;
+let  count = 5;
+console.log(count);
+log(count);
 console.log("count: %d", count);
-// 打印: count: 5
 console.log("count:", count, count);
-// 打印: count: 5 5
 ```
 
 详见 util.format()。
 
-该函数也可以作为全局函数使用。
-
-## console.verbose(data,[...args])
-
-- `data` {any}
-- `...args` {any}
+## console.verbose(...args)
+- `args` {any}
 
 与 console.log 类似，但输出结果以灰色字体显示。输出优先级低于 log，用于输出观察性质的信息。
 
-## console.info(data,[...args])
+## console.info(...args)
 
-- `data` {any}
-- `...args` {any}
+- `args` {any}
+
 
 与 console.log 类似，但输出结果以绿色字体显示。输出优先级高于 log, 用于输出重要信息。
 
-## console.warn(data,[...args])
+## console.warn(...args)
 
-- `data` {any}
-- `...args` {any}
+- `args` {any}
+
 
 与 console.log 类似，但输出结果以蓝色字体显示。输出优先级高于 info, 用于输出警告信息。
 
-## console.error(data,[...args])
+## console.error(...args)
+<Badge type="tip" text="global" vertical="middle" />
 
-- `data` {any}
-- `...args` {any}
+- `args` {any}
+
 
 与 console.log 类似，但输出结果以红色字体显示。输出优先级高于 warn, 用于输出错误信息。
 
 ## console.assert(value, message)
 
 - `value` {any} 要断言的布尔值
-- `message` {string} value 为 false 时要输出的信息
+- `message` {string} 输出的信息
 
 断言。如果 value 为 false 则输出错误信息 message 并停止脚本运行。
 
@@ -86,9 +76,7 @@ console.assert(a == 3, "加法出错啦");
 
 ## console.time([label='default'])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
-
-- `label` {String} 计时器标签，可省略
+- `label` {String} 计时器标签
 
 启动一个计时器，用于计算一个操作的持续时间。
 计时器由一个唯一的 `label` 标识。
@@ -96,8 +84,6 @@ console.assert(a == 3, "加法出错啦");
 以同名 `label`调用 `console.timeEnd()` 来停止计时器，并以毫秒为单位将持续时间输出到控制台。
 
 ## console.timeEnd([label='default'])
-
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
 
 - `label` {String} 计时器标签
 
@@ -113,59 +99,29 @@ console.timeEnd("求和");
 // 打印 求和: xxx ms
 ```
 
-## console.trace(data,[...args])
+## console.trace(...args)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
-
-- `data` {any}
-- `...args` {any}
+- `args` {any}
 
 与 console.log 类似，同时会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
 
-```js
-console.trace("Show me");
-// 打印: (堆栈跟踪会根据被调用的跟踪的位置而变化)
-// Show me
-//  at <test>:7
-```
+## console.input(...args)
 
-## console.input(data,[...args])
+- `args` {any}
 
-- `data` {any}
-- `...args` {any}
-
-与`console.log`一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串用`eval`计算后返回。
+与console.log一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串用`eval`计算后返回。
 
 **部分机型可能会有控制台不显示输入框的情况，属于 bug。**
 
-例如：
 
-```js
-console.show()；
-var n = console.input("请输入一个数字:");
-//输入123
-toast(n + 1);
-//显示124
-```
+## console.rawInput(...args)
 
-## console.rawInput(data,[...args])
-
-- `data` {any}
-- `...args` {any}
+- `args` {any}
 
 与 console.log 一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串直接返回。
 
 **部分机型可能会有控制台不显示输入框的情况，属于 bug。**
 
-例如：
-
-```js
-console.show()；
-var n = console.rawInput("请输入一个数字:");
-//输入123
-toast(n + 1);
-//显示1231
-```
 
 ## console.setSize(w, h)
 
@@ -174,11 +130,6 @@ toast(n + 1);
 
 设置控制台的大小，单位像素。
 
-```js
-console.show();
-//设置控制台大小为屏幕的四分之一
-console.setSize(device.width / 2, device.height / 2);
-```
 
 ## console.setPosition(x, y)
 
@@ -187,14 +138,8 @@ console.setSize(device.width / 2, device.height / 2);
 
 设置控制台的位置，单位像素。
 
-```js
-console.show();
-console.setPosition(100, 100);
-```
 
 ## console.setGlobalLogConfig(config)
-
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
 
 - `config` {Object} 日志配置，可选的项有：
   - `file` {string} 日志文件路径，将会把日志写入该文件中
@@ -211,11 +156,12 @@ console.setGlobalLogConfig({
 });
 ```
 
-## print(text)
+## console.print(...args)
+<Badge type="tip" text="global" vertical="middle" />
 
-- `text` {string} | {Object} 要打印到控制台的信息
+- `args` {any}
 
-相当于`log(text)`。
+相当于`log`。
 
 ## console.setTitle(title,color,size)
 
@@ -240,40 +186,17 @@ console.setTitle("中文", "#ff11ee00");
 
 - `size` {number} 字号大小，单位是 dp 或 sp 20 以内比较合适
 
-设置 log 字号大小。
-**需要在显示控制台之后才能设置，否则空指针**
+设置 log 字号大小。**需要在显示控制台之后才能设置，否则空指针**
 
-```js
-function myrandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-threads.start(function () {
-  console.show();
-  console.setTitle("中文", "#ff11ee00", 30);
-  console.setCanInput(false);
-  var i = 0;
-  do {
-    console.setLogSize(myrandom(4, 20));
-    console.setCanInput(i % 2 == 0);
-    i++;
-    console.log("i----->" + i);
-    sleep(3000);
-  } while (true);
-});
-```
 
 ## console.setCanInput(can)
 
 <Badge type="tip" text="v4.2.5+" vertical="middle" />
 
-- `can` {boolean} true 或 false 可以输入或不可以输入
+- `can` {boolean} 
 
 控制 console 是否可以输入文字
 
-```js
-console.setCanInput(false);
-```
 
 ## console.setBackgroud(color)
 
@@ -299,8 +222,14 @@ console.setBackgroud("#33ef0000");
 ```js
 console.setMaxLines(500);
 ```
+## console.setBackgroud(color)
+<Badge type="danger" text="弃用" vertical="middle" />
 
-## console.setBackground()
+## console.setBackground(color)
+
+- `color` {string} 颜色值 #AARRGGBB
+
+设置控制台背景色,**需要在显示控制台之后才能设置，否则空指针**
 
 [printf(3)]: http://man7.org/linux/man-pages/man3/printf.3.html
 [patternlayout]: http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html

@@ -1,29 +1,18 @@
-# 全局变量与函数
+# 全局对象-global
 
 <Badge type="tip" text="稳定" vertical="middle" />
 
-全局变量和函数在所有模块中均可使用。 但以下变量的作用域只在模块内，详见 [module](modules.md)：
-
-- exports
-- module
-- require()
-
 以下的对象是特定于 Auto.js 的。 有些内置对象是 JavaScript 语言本身的一部分，它们也是全局的。
 
-一些模块中的函数为了使用方便也可以直接全局使用，这些函数在此不再赘述。例如 timers 模块的 setInterval, setTimeout 等函数。
-
+一些模块中的函数为了使用方便也可以直接全局使用，这些函数在此不再赘述。
 ## sleep(n)
 
 - `n` {number} 毫秒数
 
 暂停运行 n**毫秒**的时间。1 秒等于 1000 毫秒。
 
-```js
-//暂停5毫秒
-sleep(5000);
-```
-
 ## currentPackage()
+<Badge type="tip" text="Accessibility" vertical="middle" />
 
 - `return` {string}
 
@@ -32,6 +21,7 @@ sleep(5000);
 此函数依赖于无障碍服务，如果服务未启动，则抛出异常并提示用户启动。
 
 ## currentActivity()
+<Badge type="tip" text="Accessibility" vertical="middle" />
 
 - `return` {string}
 
@@ -45,9 +35,6 @@ sleep(5000);
 
 设置剪贴板内容。此剪贴板即系统剪贴板，在一般应用的输入框中"粘贴"既可使用。
 
-```js
-setClip("剪贴板文本");
-```
 
 ## getClip()
 
@@ -55,33 +42,14 @@ setClip("剪贴板文本");
 
 返回系统剪贴板的内容。
 
-```js
-toast("剪贴板内容为:" + getClip());
-```
 
 ## toast(message)
 
 - `message` {string} 要显示的信息
 
 以气泡显示信息 message 几秒。(具体时间取决于安卓系统，一般都是 2 秒)
-
-注意，连续显示多个 toast 时，会排队显示，即使脚本已经结束，toast 可能仍然会显示。例如:
-
-```js
-for (var i = 0; i < 20; i++) {
-  toast(i);
-}
-```
-
-运行这段程序以后，会很快执行完成，且不断弹出消息，在任务管理中关闭所有脚本也无法停止。
-要保证气泡消息才继续执行可以用：
-
-```js
-for (var i = 0; i < 100; i++) {
-  toast(i);
-  sleep(2000);
-}
-```
+::: warning
+注意，连续显示多个 toast 时，会排队显示，即使脚本已经结束，toast 可能仍然会显示，记得添加延时，保证气泡消息消失才继续执行：
 
 ```js
 var _toast_ = toast;
@@ -114,12 +82,12 @@ let toast = (function () {
 })();
 module.exports = toast;
 ```
-
+:::
 ## toastLog(message)
 
 - `message` {string} 要显示的信息
 
-相当于`toast(message);log(message)`。显示信息 message 并在控制台中输出。参见 console.log。
+相当于`toast(message);log(message)`。显示信息 message 并在控制台中输出。
 
 ## waitForActivity(activity[, period = 200])
 

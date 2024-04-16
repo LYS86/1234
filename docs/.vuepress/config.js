@@ -16,8 +16,24 @@ export default defineUserConfig({
     repo: "https://github.com/kkevsekk1/AutoX",
     navbar: [
       {
-        text: "API", 
+        text: "API",
         children: [
+          {
+            "text": "关于本文档",
+            "link": "documentation.md"
+          },
+          {
+            "text": "控制台-console",
+            "link": "console.md"
+          },
+          {
+            "text": "全局变量-global",
+            "link": "global.md"
+          },
+          {
+            "text": "触摸模拟",
+            "link": "coordinatesBasedAutomation.md"
+          },
           {
             "text": "应用交互-app",
             "link": "app.md"
@@ -35,16 +51,8 @@ export default defineUserConfig({
             "link": "colors.md"
           },
           {
-            "text": "控制台-console",
-            "link": "console.md"
-          },
-          {
             "text": "协程",
             "link": "continuation.md"
-          },
-          {
-            "text": "基于坐标的触摸模拟",
-            "link": "coordinatesBasedAutomation.md"
           },
           {
             "text": "加密-crypto",
@@ -57,10 +65,6 @@ export default defineUserConfig({
           {
             "text": "对话框-dialogs",
             "link": "dialogs.md"
-          },
-          {
-            "text": "关于本文档",
-            "link": "documentation.md"
           },
           {
             "text": "脚本引擎-engines",
@@ -77,10 +81,6 @@ export default defineUserConfig({
           {
             "text": "悬浮窗-floaty",
             "link": "floaty.md"
-          },
-          {
-            "text": "全局变量与函数",
-            "link": "globals.md"
           },
           {
             "text": "ML kit OCR",
@@ -118,7 +118,7 @@ export default defineUserConfig({
             "text": "Q & A",
             "link": "qa.md"
           },
-         
+
           {
             "text": "传感器-sensors",
             "link": "sensors.md"
@@ -169,10 +169,7 @@ export default defineUserConfig({
           }
         ]
       },
-      {
-        text: "文档",
-        link: "/documentation.md",
-      },
+     
       {
         text: "简介",
         link: "/overview.md",
@@ -188,8 +185,10 @@ export default defineUserConfig({
 
   plugins: [
     mdEnhancePlugin({
-      // 你的选项
+      // 启用自定义容器
       hint: true,
+      // 添加选项卡支持
+      tabs: true,
     }),
   ],
 });

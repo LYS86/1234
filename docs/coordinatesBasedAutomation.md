@@ -1,8 +1,5 @@
-# 基于坐标的触摸模拟
 
-<Badge type="tip" text="稳定" vertical="middle" />
-
-本章节介绍了一些使用坐标进行点击、滑动的函数。这些函数有的需要安卓 7.0 以上，有的需要 root 权限。  
+本章节介绍了一些使用坐标进行点击、滑动的函数。  
 要获取要点击的位置的坐标，可以在开发者选项中开启"指针位置"。  
 基于坐标的脚本通常会有分辨率的问题，这时可以通过`setScreenMetrics()`函数来进行自动坐标放缩。
 这个函数会影响本章节的所有点击、长按、滑动等函数。通过设定脚本设计时的分辨率，使得脚本在其他分辨率下自动放缩坐标。
@@ -34,13 +31,24 @@ longClick(300, 500);
 
 那么在其他设备上 AutoJs 会自动放缩坐标以便脚本仍然有效。例如在 540 \* 960 的屏幕中`click(800, 200)`实际上会点击位置(400, 100)。
 
-# Automator
+# automator
 
 <Badge type="tip" text="稳定" vertical="middle" />
+<Badge type="tip" text="Android 7+" vertical="middle" />
+<Badge type="tip" text="Accessibility" vertical="middle" />
+<Badge type="tip" text="global" vertical="middle" />
+::: tip
+该模块基于无障碍，只有 Android7.0 及以上才有效。  
+为方便使用，全部函数均可全局使用
+```js
+automator.click(1,1)
+click(1,1)
+```
+::: 
 
-**注意以下命令基于无障碍，只有 Android7.0 及以上才有效**
+参考以下内容，编写api文档
 
-## click(x, y)
+## automator.click(x, y)
 
 - `x` {number} 要点击的坐标的 x 值
 - `y` {number} 要点击的坐标的 y 值
@@ -51,7 +59,7 @@ longClick(300, 500);
 
 使用该函数模拟连续点击时可能有点击速度过慢的问题，这时可以用`press()`函数代替。
 
-## longClick(x, y)
+## automator.longClick(x, y)
 
 - `x` {number} 要长按的坐标的 x 值
 - `y` {number} 要长按的坐标的 y 值
@@ -60,7 +68,7 @@ longClick(300, 500);
 
 一般而言，只有长按过程中被其他事件中断(例如用户自行点击)才会长按失败。
 
-## press(x, y, duration)
+## automator.press(x, y, duration)
 
 - `x` {number} 要按住的坐标的 x 值
 - `y` {number} 要按住的坐标的 y 值
@@ -82,7 +90,7 @@ for (var i = 0; i < 100; i++) {
 }
 ```
 
-## swipe(x1, y1, x2, y2, duration)
+## automator.swipe(x1, y1, x2, y2, duration)
 
 - `x1` {number} 滑动的起始坐标的 x 值
 - `y1` {number} 滑动的起始坐标的 y 值
@@ -94,28 +102,25 @@ for (var i = 0; i < 100; i++) {
 
 一般而言，只有滑动过程中被其他事件中断才会滑动失败。
 
-## gesture(duration, [x1, y1], ...[x2, y2])
+## automator.gesture(duration, ...arr)
 
 - `duration` {number} 手势的时长
-- ...[x, y] 手势滑动路径的一系列坐标
+- `arr` {number[]} 经过的坐标点，每个坐标点由 `[x, y]` 组成,至少要两个
 
 模拟手势操作。
 
 示例：模拟一个从(0, 0)到(500, 500)到(500, 100)的手势操作，时长为 2 秒。
 
 ```js
-gesture(2000, [0, 0], [500, 500], [500, 1000]);
+gesture(2000, [0, 0], [500, 500], [500, 100]);
 ```
 
-<!-- ## gestures([delay1, duration1, [x1, y1], [x2, y2], ...], [delay2, duration2, [x3, y3], [x4, y4], ...], ...) -->
+## automator.gestures(...arr)
 
-## gestures(...arr)
-
-- `arr` {Array} 手势，参数有 ：[delay, duration, point1, ...point2 ]
-  - `delay`{number} 延迟,默认 0
-  - `duration`{number} 滑动时长
-  - `point1` {Array} 起点坐标 [x,y]
-  - `point2` {Array} 终点坐标
+- `arr` {Array} 手势，参数有 ：[delay, duration, ...points]
+  - `delay`{number} 延迟,默认 0,单位毫秒
+  - `duration`{number} 滑动时长，单位毫秒
+  - `points` {number[]} 经过的坐标点，每个坐标点由 `[x, y]` 组成，至少要两个
 
 同时模拟多个手势。
 
@@ -128,11 +133,10 @@ gestures([0, 500, [800, 300], [500, 1000]], [0, 500, [300, 1500], [500, 1000]]);
 # RootAutomator
 
 <Badge type="tip" text="稳定" vertical="middle" />
-
-RootAutomator 是一个使用 root 权限来模拟触摸的对象，用它可以完成触摸与多点触摸，并且这些动作的执行没有延迟。
-
+<Badge type="tip" text="Root" vertical="middle" />
+::: tip
+RootAutomator 是一个使用 root 权限来模拟触摸的对象，用它可以完成触摸与多点触摸，并且这些动作的执行没有延迟。  
 一个脚本中最好只存在一个 RootAutomator，并且保证脚本结束退出他。  
-可以在 exit 事件中退出 RootAutomator，例如：
 
 ```js
 var ra = new RootAutomator();
@@ -141,8 +145,7 @@ events.on("exit", function () {
 });
 //执行一些点击操作
 ```
-
-**注意以下命令需要 root 权限**
+:::
 
 ## RootAutomator.tap(x, y[, id])
 
@@ -222,10 +225,11 @@ ra.exit();
 # 使用 root 权限点击和滑动的简单命令
 
 <Badge type="warning" text="实验" vertical="middle" />
+<Badge type="warning" text="Root" vertical="middle" />
 
-注意：本章节的函数在后续版本很可能有改动！请勿过分依赖本章节函数的副作用。推荐使用`RootAutomator`代替本章节的触摸函数。
-
-以下函数均需要 root 权限，可以实现任意位置的点击、滑动等。
+::: warning
+注意：本章节的函数在后续版本很可能有改动！请勿过分依赖本章节函数。推荐使用`RootAutomator`代替。
+:::
 
 - 这些函数通常首字母大写以表示其特殊的权限。
 - 这些函数均不返回任何值。
@@ -262,7 +266,7 @@ for (var i = 0; i < 100; i++) {
 
 点击位置(x, y), 您可以通过"开发者选项"开启指针位置来确定点击坐标。
 
-## Swipe(x1, y1, x2, y2, \[duration\])
+## Swipe(x1, y1, x2, y2, [duration])
 
 - `x1`, `y1` {number} 滑动起点的坐标
 - `x2`, `y2` {number} 滑动终点的坐标
