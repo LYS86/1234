@@ -46,8 +46,6 @@ click(1,1)
 ```
 ::: 
 
-参考以下内容，编写api文档
-
 ## automator.click(x, y)
 
 - `x` {number} 要点击的坐标的 x 值
