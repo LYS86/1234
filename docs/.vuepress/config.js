@@ -10,6 +10,8 @@ export default defineUserConfig({
   title: 'AutoX',
   description: 'AutoX 文档',
 
+  base: '/234/',
+
   theme: defaultTheme({
     logo: './images/logo.png',
     base: "/doc/",
