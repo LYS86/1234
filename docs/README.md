@@ -17,16 +17,9 @@ features:
     details: 结合 webpack 和 VSCode 插件，提供开发、编译、打包、部署、混淆、加密一体化支持。
   - title: 网络通信
     details: 支持 HTTP 请求和 WebSocket 通信。
+  - title: 开源项目
+    details: 您可以提交 PR（Pull Request）来修复 bug、添加新功能或改进文档。
 
 ---
-
-
-# 贡献与参与
-
-AutoX.js 是一个开源项目，我们欢迎更多的开发者参与这个项目的维护与升级。您可以提交 PR（Pull Request）来修复 bug、添加新功能或改进文档。
-
-# 交流社区
-
-我们提供了 [交流社区](http://www.autoxjs.com/)，您可以在那里与其他开发者交流学习，分享经验。
 
 
