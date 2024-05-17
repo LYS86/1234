@@ -7,7 +7,6 @@
 :::
 
 ## app.versionCode
-<Badge text="v4.1.1+" type="tip"/>
 
 - `return` {number}
 
@@ -15,7 +14,6 @@
 如果在 Autox.js 中运行则为 Autox.js 的版本号；在打包的软件中则为打包软件的版本号。
 
 ## app.versionName
-<Badge text="v4.1.1+" type="tip"/>
 
 - `return` {string}
 
@@ -36,7 +34,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.launchApp(appName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `appName` {string} 应用名称
@@ -47,7 +44,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.launch(packageName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
@@ -56,11 +52,8 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 通过应用包名启动应用。如果该包名对应的应用不存在，则返回 false；否则返回 true。
 
 
-
-
 ## app.launchPackage(packageName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
@@ -70,7 +63,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.getPackageName(appName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `appName` {string} 应用名称
@@ -81,7 +73,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.getAppName(packageName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
@@ -90,10 +81,8 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 获取应用包名对应的已安装的应用的名称。如果该找不到该应用，返回 `null`。
 
 
-
 ## app.openAppSetting(packageName)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
@@ -102,9 +91,7 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 打开应用的详情页(设置页)。如果找不到该应用，返回 false; 否则返回 true。
 
 
-
 ## app.viewFile(path)
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `path` {string} 文件路径
@@ -115,7 +102,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 
 ## app.editFile(path)
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `path` {string} 文件路径
@@ -125,7 +111,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 如果找不出可以编辑该文件的应用，则抛出`ActivityNotException`。
 
 ## app.uninstall(packageName)
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
@@ -135,7 +120,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.openUrl(url)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `url` {string} 网站的 URL，如果不以 "http://" 或 "https://" 开头则默认是 "http://"。
@@ -146,13 +130,12 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.sendEmail(options)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
-- `options` {Object} 发送邮件的参数。包括:
-  - `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
-  - `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
-  - `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
+- `options` {object} 发送邮件的参数。包括:
+  - `email` {string} | {array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
+  - `cc` {string} | {array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
+  - `bcc` {string} | {array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
   - `subject` {string} 邮件主题(标题)
   - `text` {string} 邮件正文
   - `attachment` {string} 附件的路径。
@@ -172,7 +155,6 @@ app.sendEmail({
 
 ## app.startActivity(name)
 
-<Badge text="v4.1.1+" type="tip"/>
 <Badge text="global" type="tip"/>
 
 - `name` {string} 活动名称，可选的值为:
@@ -180,7 +162,6 @@ app.sendEmail({
   - `settings` 设置界面
 
 启动 Autox.js 的特定界面。该函数在 Autox.js 内运行则会打开 Autox.js 内的界面，在打包应用中运行则会打开打包应用的相应界面。
-
 
 ## 进阶: 意图 Intent
 
@@ -210,18 +191,15 @@ app.startActivity({
 
 ### app.intent(options)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
-
-
-- `options` {Object} 选项，包括：
+- `options` {object} 选项，包括：
   - `action` {string} 意图的 Action，指意图要完成的动作，是一个字符串常量，比如"android.intent.action.SEND"。当 action 以"android.intent.action"开头时，可以省略前缀，直接用"SEND"代替。参见[Actions][actions]。
   - `type` {string} 意图的 MimeType，表示和该意图直接相关的数据的类型，表示比如"text/plain"为纯文本类型。
   - `data` {string} 意图的 Data，表示和该意图直接相关的数据，是一个 Uri, 可以是文件路径或者 Url 等。例如要打开一个文件, action 为"android.intent.action.VIEW", data 为"file:///sdcard/1.txt"。
-  - `category` {Array} 意图的类别。比较少用。参见[Categories][categories]。
+  - `category` {array} 意图的类别。比较少用。参见[Categories][categories]。
   - `packageName` {string} 目标包名
   - `className` {string} 目标 Activity 或 Service 等组件的名称
-  - `extras` {Object} 以键值对构成的这个 Intent 的 Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras][extras]。
-  - `flags` {Array} intent 的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags][flags]。
+  - `extras` {object} 以键值对构成的这个 Intent 的 Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras][extras]。
+  - `flags` {array} intent 的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags][flags]。
   - `root` {boolean} 是否以 root 权限启动、发送该 intent。使用该参数后，不能使用`context.
 
 根据选项，构造一个意图 Intent 对象。
@@ -256,7 +234,7 @@ app.startActivity({
 
 ### app.startActivity(options)
 
-- `options` {Object} 选项
+- `options` {object} 选项
 
 根据选项构造一个 Intent，并启动该 Activity。
 
@@ -270,19 +248,18 @@ app.startActivity({
 
 ### app.sendBroadcast(options)
 
-- `options` {Object} 选项
+- `options` {object} 选项
 
 根据选项构造一个 Intent，并发送该广播。
 
 ### app.startService(options)
 
-- `options` {Object} 选项
+- `options` {object} 选项
 
 根据选项构造一个 Intent，并启动该服务。
 
 ### app.sendBroadcast(name)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
 - `name` {string} 特定的广播名称，包括：
   - `inspect_layout_hierarchy` 布局层次分析
   - `inspect_layout_bounds` 布局范围
@@ -295,9 +272,7 @@ app.sendBroadcast("inspect_layout_bounds");
 
 ### app.intentToShell(options)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
-
-- `options` {Object} 选项
+- `options` {object} 选项
 
 根据选项构造一个 Intent，转换为对应的 shell 的 intent 命令的参数。
 
@@ -318,8 +293,6 @@ shell(
 
 ### app.parseUri(uri)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
-
 - `uri` {string} 一个代表 Uri 的字符串，例如"file:///sdcard/1.txt", "https://www.autojs.org"
 - `return` {Uri} 一个代表 Uri 的对象，参见[android.net.Uri][android.net.uri]。
 
@@ -328,8 +301,6 @@ shell(
 需要注意的是，在高版本 Android 上，由于系统限制直接在 Uri 暴露文件的绝对路径，因此如果 uri 字符串是文件`file://...`，返回的 Uri 会是诸如`content://...`的形式。
 
 ### app.getUriForFile(path)
-
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
 
 - `path` {string} 文件路径，例如"/sdcard/1.txt"
 - `return` {Uri} 一个指向该文件的 Uri 的对象，参见[android.net.Uri][android.net.uri]。
