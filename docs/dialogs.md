@@ -309,8 +309,13 @@ tosatLog(age);
 - `callback` {function} 事件触发执行的回调函数
 
 监听事件
-
-
+```js
+dialogs.build({
+    title: "标题"
+}).on("show", (dialog)=>{
+    toast("对话框显示了");
+}).show();
+```
 
 | 事件名         | 回调参数                                                     | 描述                                                                           |
 |----------------|----------------------------------------------------------|--------------------------------------------------------------------------------|
@@ -327,21 +332,19 @@ tosatLog(age);
 | `input`        | `text` {string}, `dialog` {Dialog}                       | 带有输入框的对话框点击确定时触发                                              |
 | `input_change` | `text` {string}, `dialog` {Dialog}                       | 对话框的输入框文本发生变化时触发                                              |
 
-请根据您的需求选择相应的事件进行使用
+## Dialog.getProgress()
 
-## dialog.getProgress()
-
-- 返回 {number}
+- `return` {number}
 
 获取当前进度条的进度值，是一个整数
 
-## dialog.getMaxProgress()
+## Dialog.getMaxProgress()
 
-- 返回 {number}
+- `return` {number}
 
 获取当前进度条的最大进度值，是一个整数
 
-## dialog.getActionButton(action)
+## Dialog.getActionButton(action)
 
 - `action` {string} 动作，包括:
   - `positive`
