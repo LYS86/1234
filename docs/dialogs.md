@@ -1,30 +1,15 @@
 # 对话框-dialogs
 
 <Badge type="tip" text="稳定" vertical="middle" />
+::: note
+dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
+:::
 
-dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。最简单的例子如下：
-
-```js
-alert("您好");
-```
-
-这段代码会弹出一个消息提示框显示"您好"，并在用户点击"确定"后继续运行。稍微复杂一点的例子如下：
-
-```js
-var clear = confirm("要清除所有缓存吗?");
-if (clear) {
-  alert("清除成功!");
-}
-```
-
-`confirm()`会弹出一个对话框并让用户选择"是"或"否"，如果选择"是"则返回 true。
-
-需要特别注意的是，对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者[Promise][promise]的形式。理解这一点可能稍有困难。举个例子:
-
+::: tip
+对话框在 ui 模式下需使用回调函数或者[Promise][promise]的形式。
 ```js
 "ui";
 //回调形式
-
 confirm("要清除所有缓存吗?", null, function (clear) {
   if (clear) {
     alert("清除成功!");
@@ -37,21 +22,16 @@ confirm("要清除所有缓存吗?").then((clear) => {
   }
 });
 ```
-
+:::
 ## dialogs.alert(title[, content, callback])
+
+<Badge text="global" type="tip"/>
 
 - `title` {string} 对话框的标题。
 - `content` {string} 可选，对话框的内容。默认为空。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
 
-显示一个只包含“确定”按钮的提示对话框。直至用户点击确定脚本才继续运行。
-
-该函数也可以作为全局函数使用。
-
-```js
-alert("出现错误~", "出现未知错误，请联系脚本作者");
-```
-
+显示一个只包含“确定”按钮的提示对话框。直至用户点击确定脚本才继续运行。    
 在 ui 模式下该函数返回一个`Promise`。例如:
 
 ```js
@@ -63,54 +43,29 @@ alert("嘿嘿嘿").then(() => {
 
 ## dialogs.confirm(title[, content, callback])
 
+<Badge text="global" type="tip"/>
+
 - `title` {string} 对话框的标题。
 - `content` {string} 可选，对话框的内容。默认为空。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `return` {boolean}
 
 显示一个包含“确定”和“取消”按钮的提示对话框。如果用户点击“确定”则返回 `true` ，否则返回 `false` 。
 
-该函数也可以作为全局函数使用。
-
-在 ui 模式下该函数返回一个`Promise`。例如:
-
-```js
-"ui";
-confirm("确定吗").then((value) => {
-  //当点击确定后会执行这里, value为true或false, 表示点击"确定"或"取消"
-});
-```
+在 ui 模式下该函数返回一个`Promise`。
 
 ## dialogs.rawInput(title[, prefill, callback])
 
+<Badge text="global" type="tip"/>
+
 - `title` {string} 对话框的标题。
 - `prefill` {string} 输入框的初始内容，可选，默认为空。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `return` {string}
 
 显示一个包含输入框的对话框，等待用户输入内容，并在用户点击确定时将输入的字符串返回。如果用户取消了输入，返回 null。
 
-该函数也可以作为全局函数使用。
-
-```js
-var name = rawInput("请输入您的名字", "小明");
-alert("您的名字是" + name);
-```
-
-在 ui 模式下该函数返回一个`Promise`。例如:
-
-```js
-"ui";
-rawInput("请输入您的名字", "小明").then((name) => {
-  alert("您的名字是" + name);
-});
-```
-
-当然也可以使用回调函数，例如:
-
-```js
-rawInput("请输入您的名字", "小明", (name) => {
-  alert("您的名字是" + name);
-});
-```
+在 ui 模式下该函数返回一个`Promise`。
 
 ## dialogs.input(title[, prefill, callback])
 
@@ -125,15 +80,7 @@ var year = new Date().getYear() + 1900 - age;
 alert("您的出生年份是" + year);
 ```
 
-在 ui 模式下该函数返回一个`Promise`。例如:
-
-```js
-"ui";
-dialogs.input("请输入您的年龄", "18").then((age) => {
-  var year = new Date().getYear() + 1900 - age;
-  alert("您的出生年份是" + year);
-});
-```
+在 ui 模式下该函数返回一个`Promise`。
 
 ## dialogs.prompt(title[, prefill, callback])
 
@@ -142,8 +89,9 @@ dialogs.input("请输入您的年龄", "18").then((age) => {
 ## dialogs.select(title, items, callback)
 
 - `title` {string} 对话框的标题。
-- `items` {Array} 对话框的选项列表，是一个字符串数组。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `items` {string[]} 对话框的选项列表，是一个字符串数组。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `return` {number}
 
 显示一个带有选项列表的对话框，等待用户选择，返回用户选择的选项索引(0 ~ item.length - 1)。如果用户取消了选择，返回-1。
 
@@ -157,23 +105,15 @@ if (i >= 0) {
 }
 ```
 
-在 ui 模式下该函数返回一个`Promise`。例如:
-
-```js
-"ui";
-dialogs
-  .select("请选择一个选项", ["选项A", "选项B", "选项C", "选项D"])
-  .then((i) => {
-    toast(i);
-  });
-```
+在 ui 模式下该函数返回一个`Promise`。
 
 ## dialogs.singleChoice(title, items[, index, callback])
 
 - `title` {string} 对话框的标题。
-- `items` {Array} 对话框的选项列表，是一个字符串数组。
+- `items` {string[]} 对话框的选项列表，是一个字符串数组。
 - `index` {number} 对话框的初始选项的位置，默认为 0。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `return` {number}
 
 显示一个单选列表对话框，等待用户选择，返回用户选择的选项索引(0 ~ item.length - 1)。如果用户取消了选择，返回-1。
 
@@ -182,9 +122,9 @@ dialogs
 ## dialogs.multiChoice(title, items[, indices, callback])
 
 - `title` {string} 对话框的标题。
-- `items` {Array} 对话框的选项列表，是一个字符串数组。
+- `items` {string[]} 对话框的选项列表，是一个字符串数组。
 - `indices` {Array} 选项列表中初始选中的项目索引的数组，默认为空数组。
-- `callback` {Function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
+- `callback` {function} 回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
 
 显示一个多选列表对话框，等待用户选择，返回用户选择的选项索引的数组。如果用户取消了选择，返回`[]`。
 
@@ -193,7 +133,7 @@ dialogs
 ## dialogs.build(properties)
 
 - `properties` {Object} 对话框属性，用于配置对话框。
-- 返回 {Dialog}
+- `return` {Dialog}
 
 创建一个可自定义的对话框，例如：
 
@@ -364,257 +304,30 @@ tosatLog(age);
 
 `dialogs.build()`返回的对话框对象，内置一些事件用于响应用户的交互，也可以获取对话框的状态和信息。
 
-## 事件: `show`
+## Dialog.on(event,callback)
+- `event` {string} 要监听的事件
+- `callback` {function} 事件触发执行的回调函数
 
-- `dialog` {Dialog} 对话框
+监听事件
 
-对话框显示时会触发的事件。例如：
 
-```js
-dialogs
-  .build({
-    title: "标题",
-  })
-  .on("show", (dialog) => {
-    toast("对话框显示了");
-  })
-  .show();
-```
 
-## 事件: `cancel`
+| 事件名         | 回调参数                                                     | 描述                                                                           |
+|----------------|----------------------------------------------------------|--------------------------------------------------------------------------------|
+| `show`         | `dialog` {Dialog}                                        | 对话框显示时触发                                                              |
+| `cancel`       | `dialog` {Dialog}                                        | 对话框被取消时触发                                                            |
+| `dismiss`      | `dialog` {Dialog}                                        | 对话框消失时触发                                                              |
+| `positive`     | `dialog` {Dialog}                                        | 确定按钮按下时触发                                                            |
+| `negative`     | `dialog` {Dialog}                                        | 取消按钮按下时触发                                                            |
+| `neutral`      | `dialog` {Dialog}                                        | 中性按钮按下时触发                                                            |
+| `any`          | `dialog` {Dialog}, `action` {string}                     | 任意按钮按下时触发，`action`可能的值为`positive`、`negative`、`neutral`        |
+| `item_select`  | `index` {number}, `item` {Object}, `dialog` {Dialog}     | 对话框列表项目被点击选中时触发，`itemsSelectMode` 为 "select"                  |
+| `single_choice`| `index` {number}, `item` {Object}, `dialog` {Dialog}     | 对话框单选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "single"        |
+| `multi_choice` | `indices` {Array}, `items` {Array}, `dialog` {Dialog}    | 对话框多选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "multi"         |
+| `input`        | `text` {string}, `dialog` {Dialog}                       | 带有输入框的对话框点击确定时触发                                              |
+| `input_change` | `text` {string}, `dialog` {Dialog}                       | 对话框的输入框文本发生变化时触发                                              |
 
-- `dialog` {Dialog} 对话框
-
-对话框被取消时会触发的事件。一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。例如：
-
-```js
-dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-  })
-  .on("cancel", (dialog) => {
-    toast("对话框取消了");
-  })
-  .show();
-```
-
-## 事件: `dismiss`
-
-- `dialog` {Dialog} 对话框
-
-对话框消失时会触发的事件。对话框被取消或者手动调用`dialog.dismiss()`函数都会触发该事件。例如：
-
-```js
-var d = dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-  })
-  .on("dismiss", (dialog) => {
-    toast("对话框消失了");
-  })
-  .show();
-
-setTimeout(() => {
-  d.dismiss();
-}, 5000);
-```
-
-## 事件: `positive`
-
-- `dialog` {Dialog} 对话框
-
-确定按钮按下时触发的事件。例如：
-
-```js
-var d = dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-  })
-  .on("positive", (dialog) => {
-    toast("你点击了确定");
-  })
-  .show();
-```
-
-## 事件: `negative`
-
-- `dialog` {Dialog} 对话框
-
-取消按钮按下时触发的事件。例如：
-
-```js
-var d = dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-  })
-  .on("negative", (dialog) => {
-    toast("你点击了取消");
-  })
-  .show();
-```
-
-## 事件: `neutral`
-
-- `dialog` {Dialog} 对话框
-
-中性按钮按下时触发的事件。例如：
-
-```js
-var d = dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-    neutral: "稍后提示",
-  })
-  .on("positive", (dialog) => {
-    toast("你点击了稍后提示");
-  })
-  .show();
-```
-
-## 事件: `any`
-
-- `dialog` {Dialog} 对话框
-- `action` {string} 被点击的按钮，可能的值为:
-  - `positive` 确定按钮
-  - `negative` 取消按钮
-  - `neutral` 中性按钮
-
-任意按钮按下时触发的事件。例如:
-
-```js
-var d = dialogs
-  .build({
-    title: "标题",
-    positive: "确定",
-    negative: "取消",
-    neutral: "稍后提示",
-  })
-  .on("any", (action, dialog) => {
-    if (action == "positive") {
-      toast("你点击了确定");
-    } else if (action == "negative") {
-      toast("你点击了取消");
-    }
-  })
-  .show();
-```
-
-## 事件: `item_select`
-
-- `index` {number} 被选中的项目索引，从 0 开始
-- `item` {Object} 被选中的项目
-- `dialog` {Dialog} 对话框
-
-对话框列表(itemsSelectMode 为"select")的项目被点击选中时触发的事件。例如：
-
-```js
-var d = dialogs
-  .build({
-    title: "请选择",
-    positive: "确定",
-    negative: "取消",
-    items: ["A", "B", "C", "D"],
-    itemsSelectMode: "select",
-  })
-  .on("item_select", (index, item, dialog) => {
-    toast("您选择的是第" + (index + 1) + "项, 选项为" + item);
-  })
-  .show();
-```
-
-## 事件: `single_choice`
-
-- `index` {number} 被选中的项目索引，从 0 开始
-- `item` {Object} 被选中的项目
-- `dialog` {Dialog} 对话框
-
-对话框单选列表(itemsSelectMode 为"single")的项目被选中并点击确定时触发的事件。例如：
-
-```js
-dialogs.build({
-    title: "请选择",
-    positive: "确定",
-    negative: "取消",
-    items: ["A", "B", "C", "D"],
-    itemsSelectMode: "single",
-  })
-  .on("single_choice", (index, item, dialog) => {
-    toast("您选择的是第" + (index + 1) + "项, 选项为" + item);
-  })
-  .show();
-```
-
-## 事件: `multi_choice`
-
-- `indices` {Array} 被选中的项目的索引的数组
-- `items` {Array} 被选中的项目的数组
-- `dialog` {Dialog} 对话框
-
-对话框多选列表(itemsSelectMode 为"multi")的项目被选中并点击确定时触发的事件。例如：
-
-```js
-dialogs.build({
-    title: "请选择",
-    positive: "确定",
-    negative: "取消",
-    items: ["A", "B", "C", "D"],
-    itemsSelectMode: "multi"
-}).on("multi_choice", (indices, items, dialog) => {
-    toastLog(util.format("您选择的项目索引为%s, 选项为%s", indices, items));
-}).show();
-```
-
-## 事件: `input`
-
-- `text` {string} 输入框的内容
-- `dialog` {Dialog} 对话框
-
-带有输入框的对话框当点击确定时会触发的事件。例如：
-
-```js
-dialogs
-  .build({
-    title: "请输入",
-    positive: "确定",
-    negative: "取消",
-    inputPrefill: "",
-  })
-  .on("input", (text, dialog) => {
-    toast("你输入的是" + text);
-  })
-  .show();
-```
-
-## 事件: `input_change`
-
-- `text` {string} 输入框的内容
-- `dialog` {Dialog} 对话框
-
-对话框的输入框的文本发生变化时会触发的事件。例如：
-
-```js
-dialogs
-  .build({
-    title: "请输入",
-    positive: "确定",
-    negative: "取消",
-    inputPrefill: "",
-  })
-  .on("input_change", (text, dialog) => {
-    toast("你输入的是" + text);
-  })
-  .show();
-```
+请根据您的需求选择相应的事件进行使用
 
 ## dialog.getProgress()
 
