@@ -91,15 +91,15 @@ module.exports = toast;
 
 ## waitForActivity(activity[, period = 200])
 
-- `activity` {String} Activity 名称
-- `period` {Number} 轮询等待间隔（毫秒）
+- `activity` {string} Activity 名称
+- `period` {number} 轮询等待间隔（毫秒）
 
 等待指定的 Activity 出现，period 为检查 Activity 的间隔。
 
 ## waitForPackage(package[, period = 200])
 
-- `package` {String} 包名
-- `period` {Number} 轮询等待间隔（毫秒）
+- `package` {string} 包名
+- `period` {number} 轮询等待间隔（毫秒）
 
 等待指定的应用出现。例如`waitForPackage("com.tencent.mm")`为等待当前界面为微信。
 
@@ -125,7 +125,7 @@ module.exports = toast;
 
 ## requiresApi(api)
 
-- `api` {Number} Android 版本号
+- `api` {number} Android 版本号
 
 表示此脚本需要 Android API 版本达到指定版本才能运行。例如`requiresApi(19)`表示脚本需要在 Android 4.4 以及以上运行。
 
