@@ -92,7 +92,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 
 ## app.viewFile(path)
-<Badge text="global" type="tip"/>
 
 - `path` {string} 文件路径
 
@@ -102,7 +101,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 
 ## app.editFile(path)
-<Badge text="global" type="tip"/>
 
 - `path` {string} 文件路径
 
@@ -111,7 +109,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 如果找不出可以编辑该文件的应用，则抛出`ActivityNotException`。
 
 ## app.uninstall(packageName)
-<Badge text="global" type="tip"/>
 
 - `packageName` {string} 应用包名
 
@@ -120,8 +117,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 
 ## app.openUrl(url)
 
-<Badge text="global" type="tip"/>
-
 - `url` {string} 网站的 URL，如果不以 "http://" 或 "https://" 开头则默认是 "http://"。
 
 用浏览器打开网站 url。
@@ -129,8 +124,6 @@ Autox.js 版本名称，例如"3.0.0 Beta"。
 如果没有安装浏览器应用，则抛出`ActivityNotException`。
 
 ## app.sendEmail(options)
-
-<Badge text="global" type="tip"/>
 
 - `options` {object} 发送邮件的参数。包括:
   - `email` {string} | {array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
@@ -154,8 +147,6 @@ app.sendEmail({
 ```
 
 ## app.startActivity(name)
-
-<Badge text="global" type="tip"/>
 
 - `name` {string} 活动名称，可选的值为:
   - `console` 日志界面
