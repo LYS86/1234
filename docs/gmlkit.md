@@ -8,7 +8,6 @@
 
 - `img` {Image} 图片
 - `Language` {String} 识别语言，可选值为：
-  - `la` 拉丁
   - `zh` 中文
   - `sa` 梵文
   - `ja` 日语
@@ -28,7 +27,6 @@ console.log(result.text);
 
 - `img` {Image} 图片
 - `Language` {String} 识别语言，可选值为：
-  - `la` 拉丁
   - `zh` 中文
   - `sa` 梵文
   - `ja` 日语
@@ -108,3 +106,8 @@ console.log(result);
 
   [其他语言]: https://developers.google.com/ml-kit/vision/text-recognition/v2/languages?hl=zh-cn
   [rect]: https://developer.android.google.cn/reference/kotlin/android/graphics/Rect?hl=en
+  
+<!-- @include: ./paddle.md -->
+
+<!-- @include: ./Tessract.md -->
+
