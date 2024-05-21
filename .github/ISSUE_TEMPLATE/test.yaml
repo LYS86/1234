@@ -1,15 +1,15 @@
 
-name: Bug报告
-description: 为了更好的解决问题以及避免浪费你我时间，请认真按照模板提交Issues
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Bug Report
+description: 报告一个关于AutoX的问题，请按照模板填写详细信息。
+title: "[Bug] "
+labels: ["bug", "needs triage"]
 body:
 - type: input
   id: autox_version
   attributes:
     label: Autox.js 版本
-    description: 请提供您的Autox.js版本号
-    placeholder: 例如：629
+    description: 输入您的Autox.js版本号
+    placeholder: 例如 629
   validations:
     required: true
 
@@ -18,7 +18,7 @@ body:
   attributes:
     label: Autox.js 下载渠道
     description: 提供您的Autox.js下载链接
-    placeholder: 例如：https://github.com/kkevsekk1/AutoX/releases
+    placeholder: 例如 https://github.com/kkevsekk1/AutoX/releases
   validations:
     required: true
 
@@ -26,8 +26,8 @@ body:
   id: android_version
   attributes:
     label: Android 版本
-    description: 请提供您的Android版本号
-    placeholder: 例如：Android 10
+    description: 输入您的Android版本号
+    placeholder: 例如 Android 10
   validations:
     required: true
 
@@ -35,8 +35,8 @@ body:
   id: android_model
   attributes:
     label: Android 机型
-    description: 请提供您的Android机型
-    placeholder: 例如：小米10
+    description: 输入您的Android机型
+    placeholder: 例如 小米10
   validations:
     required: true
 
@@ -44,8 +44,8 @@ body:
   id: android_system
   attributes:
     label: Android 系统类别
-    description: 请提供您的Android系统类别
-    placeholder: 例如：MIUI
+    description: 输入您的Android系统类别
+    placeholder: 例如 MIUI
   validations:
     required: true
 
@@ -71,6 +71,15 @@ body:
   attributes:
     label: 报错日志
     description: 如果有，请提供报错日志
+  validations:
+    required: false
+
+- type: textarea
+  id: code_snippet
+  attributes:
+    label: 复现代码
+    description: 如果可以，请提供可以复现问题的代码片段
+    render: shell
   validations:
     required: false
 
