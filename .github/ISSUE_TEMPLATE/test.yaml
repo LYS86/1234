@@ -1,0 +1,83 @@
+
+name: Bug报告
+description: 为了更好的解决问题以及避免浪费你我时间，请认真按照模板提交Issues
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+- type: input
+  id: autox_version
+  attributes:
+    label: Autox.js 版本
+    description: 请提供您的Autox.js版本号
+    placeholder: 例如：629
+  validations:
+    required: true
+
+- type: input
+  id: download_link
+  attributes:
+    label: Autox.js 下载渠道
+    description: 提供您的Autox.js下载链接
+    placeholder: 例如：https://github.com/kkevsekk1/AutoX/releases
+  validations:
+    required: true
+
+- type: input
+  id: android_version
+  attributes:
+    label: Android 版本
+    description: 请提供您的Android版本号
+    placeholder: 例如：Android 10
+  validations:
+    required: true
+
+- type: input
+  id: android_model
+  attributes:
+    label: Android 机型
+    description: 请提供您的Android机型
+    placeholder: 例如：小米10
+  validations:
+    required: true
+
+- type: input
+  id: android_system
+  attributes:
+    label: Android 系统类别
+    description: 请提供您的Android系统类别
+    placeholder: 例如：MIUI
+  validations:
+    required: true
+
+- type: input
+  id: vscode_extension_version
+  attributes:
+    label: VSCODE Autox.js 扩展版本
+    description: 如果是连接电脑的问题，请提供VSCODE Autox.js扩展版本号
+    placeholder: 可选
+  validations:
+    required: false
+
+- type: textarea
+  id: problem_description
+  attributes:
+    label: 问题描述
+    description: 请详细描述您遇到的问题
+  validations:
+    required: true
+
+- type: textarea
+  id: error_log
+  attributes:
+    label: 报错日志
+    description: 如果有，请提供报错日志
+  validations:
+    required: false
+
+- type: textarea
+  id: screenshot
+  attributes:
+    label: 屏幕截图
+    description: 如果有，请提供问题相关的屏幕截图链接
+  validations:
+    required: false
