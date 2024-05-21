@@ -10,35 +10,35 @@
 ## colors.toString(color)
 
 - `color` {number} 整数 RGB 颜色值
-- 返回 {string}
+- `return` {string}
 
 返回颜色值的字符串，格式为 "#AARRGGBB"。
 
 ## colors.red(color)
 
 - `color` {number} | {string} 颜色值
-- 返回 {number}
+- `return` {number}
 
 返回颜色 color 的 R 通道的值，范围 0~255.
 
 ## colors.green(color)
 
 - `color` {number} | {string} 颜色值
-- 返回 {number}
+- `return` {number}
 
 返回颜色 color 的 G 通道的值，范围 0~255.
 
 ## colors.blue(color)
 
 - `color` {number} | {string} 颜色值
-- 返回 {number}
+- `return` {number}
 
 返回颜色 color 的 B 通道的值，范围 0~255.
 
 ## colors.alpha(color)
 
 - `color` {number} | {string} 颜色值
-- 返回 {number}
+- `return` {number}
 
 返回颜色 color 的 Alpha 通道的值，范围 0~255.
 
@@ -47,7 +47,7 @@
 - `red` {number} 颜色的 R 通道的值
 - `blue` {number} 颜色的 G 通道的值
 - `green` {number} 颜色的 B 通道的值
-- 返回 {number}
+- `return` {number}
 
 返回这些颜色通道构成的整数颜色值。Alpha 通道将是 255（不透明）。
 
@@ -57,14 +57,14 @@
 - `red` {number} 颜色的 R 通道的值
 - `green` {number} 颜色的 G 通道的值
 - `blue` {number} 颜色的 B 通道的值
-- 返回 {number}
+- `return` {number}
 
 返回这些颜色通道构成的整数颜色值。
 
 ## colors.parseColor(colorStr)
 
 - `colorStr` {string} 表示颜色的字符串，例如"#112233"
-- 返回 {number}
+- `return` {number}
 
 返回颜色的整数值。
 
@@ -78,7 +78,7 @@
   - `rgb`: rgb 欧拉距离相似度。与给定颜色 color 的 rgb 欧拉距离小于等于 threshold 时匹配。
   - `rgb+`: 加权 rgb 欧拉距离匹配([LAB Delta E](https://en.wikipedia.org/wiki/Color_difference))。
   - `hs`: hs 欧拉距离匹配。hs 为 HSV 空间的色调值。
-- 返回 {Boolean}
+- `return` {Boolean}
 
 返回两个颜色是否相似。
 
@@ -86,7 +86,7 @@
 
 - `color1` {number} | {string} 颜色值 1
 - `color1` {number} | {string} 颜色值 2
-- 返回 {Boolean}
+- `return` {Boolean}
 
 返回两个颜色是否相等。**注意该函数会忽略 Alpha 通道的值进行比较**。
 

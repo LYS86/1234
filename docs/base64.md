@@ -2,7 +2,9 @@
 
 <Badge type="tip" text="稳定" vertical="middle" />
 
+::: note base64
 提供基本的 Base64 转换函数。
+:::
 
 ## $base64.encode(str[, encoding = 'utf-8'])
 

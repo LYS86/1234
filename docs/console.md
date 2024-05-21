@@ -1,7 +1,7 @@
 # 控制台-console
 
 <Badge type="tip" text="稳定" vertical="middle" />
-::: note
+::: note console
 该模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。
 :::
 

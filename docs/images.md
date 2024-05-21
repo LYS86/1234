@@ -18,7 +18,7 @@ img.recycle();
 
 例外的是，`caputerScreen()`返回的图片不需要回收。
 
-# 图片处理
+
 
 ## images.read(path)
 
@@ -69,7 +69,7 @@ app.viewFile("/sdcard/1.jpg");
 
 ## images.toBase64(image[, format = "png", quality = 100])
 
-- `image` {image} 图片
+- `image` {Image} 图片
 - `format` {string} 图片格式，可选的值为:
   - `png`
   - `jpeg`/`jpg`
@@ -87,7 +87,7 @@ app.viewFile("/sdcard/1.jpg");
 
 ## images.toBytes(img[, format = "png", quality = 100])
 
-- `img` {image} 图片
+- `img` {Image} 图片
 - `format` {string} 图片格式，可选的值为:
   - `png`
   - `jpeg`/`jpg`
@@ -116,7 +116,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.resize(img, size[, interpolation])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `size` {Array} 两个元素的数组[w, h]，分别表示宽度和高度；如果只有一个元素，则宽度和高度相等
@@ -135,7 +135,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.scale(img, fx, fy[, interpolation])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `fx` {number} 宽度放缩倍数
@@ -154,7 +154,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.rotate(img, degress[, x, y])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `degress` {number} 旋转角度。
@@ -167,7 +167,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.concat(img1, img2, [direction])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img1` {Image} 图片 1
 - `img2` {Image} 图片 2
@@ -182,7 +182,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.grayscale(img)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `retrun` {Image}
@@ -191,7 +191,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## image.threshold(img, threshold, maxVal[, type])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `threshold` {number} 阈值
@@ -211,7 +211,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.adaptiveThreshold(img, maxValue, adaptiveMethod, thresholdType, blockSize, C)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `maxValue` {number} 最大值
@@ -230,7 +230,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.cvtColor(img, code[, dstCn])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `code` {string} 颜色空间转换的类型，可选的值有一共有 205 个（参见[ColorConversionCodes][colorconversioncodes]），这里只列出几个：
@@ -245,7 +245,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.inRange(img, lowerBound, upperBound)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `lowerBound` {string} | {number} 颜色下界
@@ -257,7 +257,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.interval(img, color, interval)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `color` {string} | {number} 颜色
@@ -269,7 +269,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.blur(img, size[, anchor, type])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `size` {Array} 定义滤波器的大小，如[3, 3]
@@ -291,7 +291,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.medianBlur(img, size)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `size` {Array} 定义滤波器的大小，如[3, 3]
@@ -302,7 +302,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.gaussianBlur(img, size[, sigmaX, sigmaY, type])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 图片
 - `size` {Array} 定义滤波器的大小，如[3, 3]
@@ -316,7 +316,7 @@ images.save(clip, "/sdcard/clip.png");
 
 ## images.matToImage(mat)
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `mat` {Mat} OpenCV 的 Mat 对象
 - `retrun` {Image}
@@ -690,7 +690,7 @@ log(arr);
 
 ## images.matchTemplate(img, template, [options])
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
+
 
 - `img` {Image} 大图片
 - `template` {Image} 小图片（模板）
@@ -705,7 +705,6 @@ log(arr);
 
 # MatchingResult
 
-<Badge type="tip" text="v4.1.0+" vertical="middle" />
 
 ## MatchingResult.matches
 
@@ -797,11 +796,60 @@ log(result.sortBy("top-right"));
 
 # Image
 
-表示一张图片，可以是截图的图片，或者本地读取的图片，或者从网络获取的图片。
+ImageWrapper类
+
+## new Image(width, height)
+- `width` {number} 图片宽度
+- `height` {number} 图片高度
+- `return` {Image}
+
+新建一张空白图片。
+
+## Image.ofImage(Image)
+- `Image` {[Image](https://developer.android.google.cn/reference/android/media/Image)} 图片
+- `return` {Image}
+
+将 Image 对象转换为 Image 对象。
+
+## Image.ofMat(Mat)
+- `Mat` {Mat} 矩阵
+- `return` {Image}
+
+将 Mat 对象转换为 Image 对象。
+
+## Image.ofBitmap(Bitmap)
+- `Bitmap` {[Bitmap](https://developer.android.google.cn/reference/android/graphics/Bitmap)} 位图
+- `return` {Image}
+
+将 Bitmap 对象转换为 Image 对象。
+
+## Image.toBitmap(Image)
+- `Image` {[Image](https://developer.android.google.cn/reference/android/media/Image)} 图片
+- `return` {[Bitmap](https://developer.android.google.cn/reference/android/graphics/Bitmap)} 位图
+
+将 Image 对象转换为 Bitmap 对象。
+
+## Image.getMat()
+- `return` {Mat}
+
+将 Image 对象转换为 Mat 对象。
+
+## Image.getBitmap()
+- `return` {[Bitmap](https://developer.android.google.cn/reference/android/graphics/Bitmap)} 位图
+
+将 Image 对象转换为 Bitmap 对象。
+
+## Image.ensureNotRecycled()
+检查图片是否已经被回收，如果被回收则抛出异常。
 
 ## Image.recycle()
 
 释放图片
+
+## Image.clone()
+- `return` {Image}
+
+复制图片
 
 ## Image.getWidth()
 

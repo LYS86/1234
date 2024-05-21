@@ -1,8 +1,9 @@
 # 事件与监听-events
 
 <Badge type="tip" text="稳定" vertical="middle" />
-
-events 模块提供了监听手机通知、按键、触摸的接口。您可以用他配合自动操作函数完成自动化工作。
+::: note events
+该模块提供了监听手机通知、按键、触摸的接口。您可以用他配合自动操作函数完成自动化工作。
+:::
 
 events 本身是一个[EventEmiiter](#eventemitter), 但内置了一些事件、包括按键事件、通知事件、Toast 事件等。
 
@@ -21,11 +22,12 @@ while (true) {
 ```
 
 ## events.emitter()
+- `return` {[EventEmitter](#eventemitter)}
 
 返回一个新的[EventEmitter](#eventemitter)。这个 EventEmitter 没有内置任何事件。
 
 ## events.observeKey()
-
+- <Badge type="tip" text="Accessibility" vertical="middle" />
 启用按键监听，例如音量键、Home 键。按键监听使用无障碍服务实现，如果无障碍服务未启用会抛出异常并提示开启。
 
 只有这个函数成功执行后, `onKeyDown`, `onKeyUp`等按键事件的监听才有效。
@@ -35,7 +37,7 @@ while (true) {
 ## events.onKeyDown(keyName, listener)
 
 - `keyName` {string} 要监听的按键名称
-- `listener` {Function} 按键监听器。参数为一个[KeyEvent](#keyevent)。
+- `listener` {function} 按键监听器。参数为一个[KeyEvent](#keyevent)。
 
 注册一个按键监听函数，当有 keyName 对应的按键被按下会调用该函数。可用的按键名称参见[Keys](#keys)。
 
@@ -58,7 +60,7 @@ events.onKeyDown("menu", function (event) {
 ## events.onKeyUp(keyName, listener)
 
 - `keyName` {string} 要监听的按键名称
-- `listener` {Function} 按键监听器。参数为一个[KeyEvent](#keyevent)。
+- `listener` {function} 按键监听器。参数为一个[KeyEvent](#keyevent)。
 
 注册一个按键监听函数，当有 keyName 对应的按键弹起会调用该函数。可用的按键名称参见[Keys](#keys)。
 
@@ -83,7 +85,7 @@ events.onKeyDown("home", function (event) {
 ## events.onceKeyDown(keyName, listener)
 
 - `keyName` {string} 要监听的按键名称
-- `listener` {Function} 按键监听器。参数为一个[KeyEvent](#keyevent)
+- `listener` {function} 按键监听器。参数为一个[KeyEvent](#keyevent)
 
 注册一个按键监听函数，当有 keyName 对应的按键被按下时会调用该函数，之后会注销该按键监听器。
 
@@ -92,7 +94,7 @@ events.onKeyDown("home", function (event) {
 ## events.onceKeyUp(keyName, listener)
 
 - `keyName` {string} 要监听的按键名称
-- `listener` {Function} 按键监听器。参数为一个[KeyEvent](#keyevent)
+- `listener` {function} 按键监听器。参数为一个[KeyEvent](#keyevent)
 
 注册一个按键监听函数，当有 keyName 对应的按键弹起时会调用该函数，之后会注销该按键监听器。
 
@@ -112,8 +114,8 @@ events.onKeyDown("home", function (event) {
 
 ## events.setKeyInterceptionEnabled([key, ]enabled)
 
-- `enabled` {boolean}
 - `key` {string} 要屏蔽的按键
+- `enabled` {boolean}
 
 设置按键屏蔽是否启用。所谓按键屏蔽指的是，屏蔽原有按键的功能，例如使得音量键不再能调节音量，但此时仍然能通过按键事件监听按键。
 
@@ -134,7 +136,7 @@ events.onKeyDown("volume_up", () => {
 只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。
 
 ## events.observeTouch()
-
+- <Badge type="tip" text="Root" vertical="middle" />
 启用屏幕触摸监听。（需要 root 权限）
 
 只有这个函数被成功执行后, 触摸事件的监听才有效。
@@ -157,7 +159,7 @@ events.onKeyDown("volume_up", () => {
 
 ## events.onTouch(listener)
 
-- `listener` {Function} 参数为[Point](images.html#images_point)的函数
+- `listener` {function} 参数为[Point](images.html#images_point)的函数
 
 注册一个触摸监听函数。相当于`on("touch", listener)`。
 
@@ -274,7 +276,7 @@ events.onNotification(function (notification) {
 ```
 
 ## events.observeToast()
-
+- <Badge type="tip" text="Accessibility" vertical="middle" />
 开启 Toast 监听。
 
 Toast 监听依赖于无障碍服务，因此此函数会确保无障碍服务运行。
@@ -435,7 +437,7 @@ emitter.once("event", () => {
 ## EventEmitter.addListener(eventName, listener)
 
 - `eventName` {any}
-- `listener` {Function}
+- `listener` {function}
 
 emitter.on(eventName, listener) 的别名。
 
@@ -491,7 +493,7 @@ console.log(util.inspect(server.listeners("connection")));
 ## EventEmitter.on(eventName, listener)
 
 - `eventName` {any} 事件名
-- `listener` {Function} 回调函数
+- `listener` {function} 回调函数
 
 添加 listener 函数到名为 eventName 的事件的监听器数组的末尾。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
@@ -518,7 +520,7 @@ myEE.emit("foo");
 ## EventEmitter.once(eventName, listener)
 
 - `eventName` {any} 事件名
-- `listener` {Function} 回调函数
+- `listener` {function} 回调函数
 
 添加一个单次 listener 函数到名为 eventName 的事件。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
@@ -545,7 +547,7 @@ myEE.emit("foo");
 ## EventEmitter.prependListener(eventName, listener)
 
 - `eventName` {any} 事件名
-- `listener` {Function} 回调函数
+- `listener` {function} 回调函数
 
 添加 listener 函数到名为 eventName 的事件的监听器数组的开头。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
@@ -560,7 +562,7 @@ server.prependListener("connection", (stream) => {
 ## EventEmitter.prependOnceListener(eventName, listener)
 
 - `eventName` {any} 事件名
-- `listener` {Function} 回调函数
+- `listener` {function} 回调函数
 
 添加一个单次 listener 函数到名为 eventName 的事件的监听器数组的开头。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
@@ -585,7 +587,7 @@ server.prependOnceListener("connection", (stream) => {
 ## EventEmitter.removeListener(eventName, listener)
 
 - `eventName` {any}
-- `listener` {Function}
+- `listener` {function}
 
 从名为 eventName 的事件的监听器数组中移除指定的 listener。
 

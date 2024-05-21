@@ -1,8 +1,10 @@
 # 悬浮窗-floaty
 
 <Badge type="tip" text="稳定" vertical="middle" />
+::: note floaty
 floaty 模块提供了悬浮窗的相关函数，可以在屏幕上显示自定义悬浮窗，并控制悬浮窗的大小、位置等。 
-在使用 floaty 模块之前，应先检查并获取悬浮窗的权限，否则将无法正常执行悬浮窗相关的代码。检查和获取悬浮窗权限的方法如下：
+在使用 floaty 模块之前，应先检查并获取悬浮窗的权限，否则将无法正常执行悬浮窗相关的代码。
+:::
 
 ## floaty.checkPermission()
 

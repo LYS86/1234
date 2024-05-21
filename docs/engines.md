@@ -2,14 +2,9 @@
 
 <Badge type="tip" text="稳定" vertical="middle" />
 
-engines 模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数，包括运行其他脚本，关闭脚本等。
-
-例如，获取脚本所在目录：
-
-```js
-toast(engines.myEngine().cwd());
-```
-
+::: note engines
+该模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数，包括运行其他脚本，关闭脚本等。
+:::
 ## engines.execScript(name, script[, config])
 
 - `name` {string} 要运行的脚本名称。这个名称和文件名称无关，只是在任务管理中显示的名称。
@@ -19,10 +14,9 @@ toast(engines.myEngine().cwd());
   - `loopTimes` {number} 循环运行次数，默认为 1。0 为无限循环。
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
+- `return` {[ScriptExecution](#scriptexecution)}
 
-在新的脚本环境中运行脚本 script。返回一个[ScriptExecution](#scriptexecution)对象。
-
-所谓新的脚本环境，指定是，脚本中的变量和原脚本的变量是不共享的，并且，脚本会在新的线程中运行。
+在新的脚本环境中运行脚本 script。所谓新的脚本环境，指脚本中的变量和原脚本的变量是不共享的，并且脚本会在新的线程中运行。
 
 最简单的例子如下：
 
@@ -78,8 +72,9 @@ exec(add, { a: 1, b: 2 });
   - `loopTimes` {number} 循环运行次数，默认为 1。0 为无限循环。
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
+- `return` {[ScriptExecution](#scriptexecution)}
 
-在新的脚本环境中运行脚本文件 path。返回一个[ScriptExecution](#scriptexecution)对象。
+在新的脚本环境中运行脚本文件 path。
 
 ```js
 engines.execScriptFile("/sdcard/脚本/1.js");
@@ -111,7 +106,6 @@ engines.execAutoFile("/sdcard/脚本/1.auto");
 
 ## engines.myEngine()
 
-<Badge type="tip" text="v4.1.0" vertical="middle" />
 - `return` {[ScriptEngine](#scriptengine)}
 
 返回当前脚本的脚本引擎对象。
@@ -126,7 +120,7 @@ log(engines.myEngine().execArgv);
 
 ## engines.all()
 
-- `return` {Array}
+- `return` {[ScriptEngine](#scriptengine)[]}
 
 返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#scriptengine)的数组。
 
@@ -141,10 +135,12 @@ log(engines.all());
 要停止这个脚本的执行，使用`exectuion.getEngine().forceStop()`.
 
 ## ScriptExecution.getEngine()
+- `return` {[ScriptEngine](#scriptengine)}
 
-返回执行该脚本的脚本引擎对象([ScriptEngine](#scriptengine))
+返回执行该脚本的脚本引擎对象
 
 ## ScriptExecution.getConfig()
+- `return` {[ScriptConfig](#scriptconfig)}
 
 返回该脚本的运行配置([ScriptConfig](#scriptconfig))
 
@@ -153,8 +149,7 @@ log(engines.all());
 脚本引擎对象。
 
 ## ScriptEngine.isDestroyed()
-
-- 返回 {Boolean}
+- `return` {boolean}
 
 检测该脚本是否执行结束
 
@@ -187,7 +182,7 @@ log(engines.myEngine().getSource());
 ## ScriptEngine.emit(eventName[, ...args])
 
 - `eventName` {string} 事件名称
-- `...args` {any} 事件参数
+- `args` {any} 事件参数
 
 向该脚本引擎发送一个事件，该事件可以在该脚本引擎对应的脚本的 events 模块监听到并在脚本主线程执行事件处理。
 
@@ -217,25 +212,25 @@ e.getEngine().emit("say", "你好");
 
 脚本执行时的配置。
 
-## delay
+## ScriptConfig.delay
 
 - `return` {number}
 
 延迟执行的毫秒数
 
-## interval
+## ScriptConfig.interval
 
 - `return` {number}
 
 循环运行时两次运行之间的时间间隔
 
-## loopTimes
+## ScriptConfig.loopTimes
 
 - `return` {number}
 
 循环运行次数
 
-## getPath()
+## ScriptConfig.getPath()
 
 - `return` {Array}
 

@@ -1,8 +1,8 @@
 # 对话框-dialogs
 
 <Badge type="tip" text="稳定" vertical="middle" />
-::: note
-dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
+::: note dialogs
+该模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
 :::
 
 ::: tip
@@ -317,20 +317,20 @@ dialogs.build({
 }).show();
 ```
 
-| 事件名         | 回调参数                                                     | 描述                                                                           |
-|----------------|----------------------------------------------------------|--------------------------------------------------------------------------------|
-| `show`         | `dialog` {Dialog}                                        | 对话框显示时触发                                                              |
-| `cancel`       | `dialog` {Dialog}                                        | 对话框被取消时触发                                                            |
-| `dismiss`      | `dialog` {Dialog}                                        | 对话框消失时触发                                                              |
-| `positive`     | `dialog` {Dialog}                                        | 确定按钮按下时触发                                                            |
-| `negative`     | `dialog` {Dialog}                                        | 取消按钮按下时触发                                                            |
-| `neutral`      | `dialog` {Dialog}                                        | 中性按钮按下时触发                                                            |
-| `any`          | `dialog` {Dialog}, `action` {string}                     | 任意按钮按下时触发，`action`可能的值为`positive`、`negative`、`neutral`        |
-| `item_select`  | `index` {number}, `item` {Object}, `dialog` {Dialog}     | 对话框列表项目被点击选中时触发，`itemsSelectMode` 为 "select"                  |
-| `single_choice`| `index` {number}, `item` {Object}, `dialog` {Dialog}     | 对话框单选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "single"        |
-| `multi_choice` | `indices` {Array}, `items` {Array}, `dialog` {Dialog}    | 对话框多选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "multi"         |
-| `input`        | `text` {string}, `dialog` {Dialog}                       | 带有输入框的对话框点击确定时触发                                              |
-| `input_change` | `text` {string}, `dialog` {Dialog}                       | 对话框的输入框文本发生变化时触发                                              |
+| 事件名          | 回调参数                                              | 描述                                                                    |
+| --------------- | ----------------------------------------------------- | ----------------------------------------------------------------------- |
+| `show`          | `dialog` {Dialog}                                     | 对话框显示时触发                                                        |
+| `cancel`        | `dialog` {Dialog}                                     | 对话框被取消时触发                                                      |
+| `dismiss`       | `dialog` {Dialog}                                     | 对话框消失时触发                                                        |
+| `positive`      | `dialog` {Dialog}                                     | 确定按钮按下时触发                                                      |
+| `negative`      | `dialog` {Dialog}                                     | 取消按钮按下时触发                                                      |
+| `neutral`       | `dialog` {Dialog}                                     | 中性按钮按下时触发                                                      |
+| `any`           | `dialog` {Dialog}, `action` {string}                  | 任意按钮按下时触发，`action`可能的值为`positive`、`negative`、`neutral` |
+| `item_select`   | `index` {number}, `item` {Object}, `dialog` {Dialog}  | 对话框列表项目被点击选中时触发，`itemsSelectMode` 为 "select"           |
+| `single_choice` | `index` {number}, `item` {Object}, `dialog` {Dialog}  | 对话框单选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "single" |
+| `multi_choice`  | `indices` {Array}, `items` {Array}, `dialog` {Dialog} | 对话框多选列表项目被选中并点击确定时触发，`itemsSelectMode` 为 "multi"  |
+| `input`         | `text` {string}, `dialog` {Dialog}                    | 带有输入框的对话框点击确定时触发                                        |
+| `input_change`  | `text` {string}, `dialog` {Dialog}                    | 对话框的输入框文本发生变化时触发                                        |
 
 ## Dialog.getProgress()
 

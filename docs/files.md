@@ -2,9 +2,9 @@
 
 <Badge type="tip" text="稳定" vertical="middle" />
 
+::: note files
 files 模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。
-
-一次性的文件读写可以直接使用`files.read()`, `files.write()`, `files.append()`等方便的函数，但如果需要频繁读写或随机读写，则使用`open()`函数打开一个文件对象来操作文件，并在操作完毕后调用`close()`函数关闭文件。
+:::
 
 ## files.isFile(path)
 
@@ -13,10 +13,6 @@ files 模块提供了一些常见的文件处理，包括文件读写、移动�
 
 返回路径 path 是否是文件。
 
-```js
-log(files.isDir("/sdcard/文件夹/")); //返回false
-log(files.isDir("/sdcard/文件.txt")); //返回true
-```
 
 ## files.isDir(path)
 
@@ -24,11 +20,6 @@ log(files.isDir("/sdcard/文件.txt")); //返回true
 - `return` {boolean}
 
 返回路径 path 是否是文件夹。
-
-```js
-log(files.isDir("/sdcard/文件夹/")); //返回true
-log(files.isDir("/sdcard/文件.txt")); //返回false
-```
 
 ## files.isEmptyDir(path)
 
@@ -52,10 +43,6 @@ log(files.isDir("/sdcard/文件.txt")); //返回false
 
 创建一个文件或文件夹并返回是否创建成功。如果文件已经存在，则直接返回`false`。
 
-```js
-files.create("/sdcard/新文件夹/");
-```
-
 ## files.createWithDirs(path)
 
 - `path` {string} 路径
@@ -63,9 +50,6 @@ files.create("/sdcard/新文件夹/");
 
 创建一个文件或文件夹并返回是否创建成功。如果文件所在文件夹不存在，则先创建他所在的一系列文件夹。如果文件已经存在，则直接返回`false`。
 
-```js
-files.createWithDirs("/sdcard/新文件夹/新文件夹/新文件夹/1.txt");
-```
 
 ## files.exists(path)
 
@@ -122,14 +106,6 @@ log(sb.toString());
 
 把 text 写入到文件 path 中。如果文件存在则覆盖，不存在则创建。
 
-```js
-var text = "文件内容";
-//写入文件
-files.write("/sdcard/1.txt", text);
-//用其他应用查看文件
-app.viewFile("/sdcard/1.txt");
-```
-
 ## files.writeBytes(path, bytes)
 
 - `path` {string} 路径
@@ -145,14 +121,6 @@ app.viewFile("/sdcard/1.txt");
 
 把 text 追加到文件 path 的末尾。如果文件不存在则创建。
 
-```js
-var text = "追加的文件内容";
-files.append("/sdcard/1.txt", text);
-files.append("/sdcard/1.txt", text);
-//用其他应用查看文件
-app.viewFile("/sdcard/1.txt");
-```
-
 ## files.appendBytes(path, bytes[, encoding = 'utf-8'])
 
 - `path` {string} 路径
@@ -167,7 +135,7 @@ app.viewFile("/sdcard/1.txt");
 - `toPath` {string} 复制到的文件路径
 - `return` {boolean}
 
-复制文件，返回是否复制成功。例如`files.copy("/sdcard/1.txt", "/sdcard/Download/1.txt")`。
+复制文件，返回是否复制成功。
 
 ## files.move(fromPath, toPath)
 
@@ -175,7 +143,7 @@ app.viewFile("/sdcard/1.txt");
 - `toPath` {string} 移动到的文件路径
 - `return` {boolean}
 
-移动文件，返回是否移动成功。例如`files.move("/sdcard/1.txt", "/sdcard/Download/1.txt")`会把 1.txt 文件从 sd 卡根目录移动到 Download 文件夹。
+移动文件，返回是否移动成功。
 
 ## files.rename(path, newName)
 
