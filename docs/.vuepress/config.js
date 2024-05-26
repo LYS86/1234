@@ -22,7 +22,6 @@ export
 
         title: 'AutoX',
         description: 'AutoX 文档',
-
         base: '/1234/',
 
         theme: defaultTheme({
@@ -141,6 +140,16 @@ export
                 text: "简介",
                 link: "/overview.md",
             },],
+            themePlugins: {
+                // 启用代码块复制功能
+                copyCode: {
+                    showInMobile: true
+                },
+                linkscheck: {
+                    dev: true
+
+                }
+            }
 
 
         }),
@@ -150,7 +159,6 @@ export
         bundler: viteBundler(),
 
         plugins: [
-            ['vuepress-plugin-code-copy', true],
             mdEnhancePlugin({
                 // 启用自定义容器
                 hint: true,
