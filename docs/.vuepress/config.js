@@ -130,7 +130,12 @@ export
                 {
                     "text": "WorkWithJava",
                     "link": "workWithJava.md"
-                }, {
+                }, 
+                {
+                    "text": "UI - 界面",
+                    "link": "ui.md",
+                },
+                {
                     "text": "Q & A",
                     "link": "qa.md"
                 }]
